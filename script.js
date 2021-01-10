@@ -7,6 +7,8 @@ const Gameboard  = (() => {
 })();
 
 const displayController = (() => {
+    
+    
     const initiatePlayer = () => {
 
     }
@@ -29,11 +31,22 @@ const HumanPlayer = (playerName, playerSymbol) => {
     return Object.assign({},prototype,returnObj)
 };
 
-const AIPlayer = () => {
-    const prototype = Player(playerName,playerSymbol)
-    const playTurn = () => {
 
-    }
-    const returnObj = {playTurn}
-    return Object.assign({},prototype,returnObj)
-};
+
+
+
+
+
+
+
+
+
+// This is for when I implement the MiniMax Algorithm
+// const AIPlayer = () => {
+//     const prototype = Player(playerName,playerSymbol)
+//     const playTurn = () => {
+
+//     }
+//     const returnObj = {playTurn}
+//     return Object.assign({},prototype,returnObj)
+// };
