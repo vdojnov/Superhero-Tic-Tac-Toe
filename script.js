@@ -17,15 +17,19 @@ const displayController = (() => {
 const Player = (playerName, playerSymbol) => {
     const name = playerName;
     const symbol = playerSymbol;
-    const getPlayerName = () => {
-        return name;
-    };
+    const getPlayerName = () => name;
+    const getPlayerSymbol = () => symbol;
+
+    return {
+        getPlayerName, 
+        getPlayerSymbol
+    }
 };
 
 const HumanPlayer = (playerName, playerSymbol) => {    
     const prototype = Player(playerName,playerSymbol)
     const playTurn = () => {
-
+        
     }
     const returnObj = {playTurn}
     return Object.assign({},prototype,returnObj)

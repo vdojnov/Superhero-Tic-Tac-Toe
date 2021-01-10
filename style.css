@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    /* background-color: lightblue; */
+    background-image: url("media/marvel.jpg");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+
+    
+}
+
+#game-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 340px;
+    margin: 0;
+}
+
+.game-box {
+    width: 110px;
+    height: 110px;
+    background-color: khaki;
+    /* border: 3px solid red; */
+    font-size: 8em;
+    text-align: center;
+    line-height: 90px;
+    margin-bottom: 5px;
+    
+}
