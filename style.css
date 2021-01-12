@@ -1,22 +1,40 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    /* width: 100%; */
     margin: 0;
     /* background-color: lightblue; */
     background-image: url("media/marvel.jpg");
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-position:center;
-
+    font-family: "Comic Sans MS";
+    color: white;
     
 }
 
+#main-div{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+/* GAME */
 #game-board-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
+    height: 800px;
+    width: 1000px;
+    background-color:rgba(40, 46, 59, 0.966);
+    /* background-image: url(media/red-dots.png); */
+    /* background-position:center; */
+    align-self: center;
+    border-radius: 3%;
+    box-shadow: 3px 3px 5px #333;
+
 }
 
 #game-board {
@@ -26,16 +44,56 @@ body {
     justify-content: space-between;
     width: 340px;
     margin: 0;
+    margin-top: 10px;
 }
 
 .game-box {
+    display: flex;
+    flex-direction: column;
     width: 110px;
     height: 110px;
-    background-color: khaki;
-    /* border: 3px solid red; */
-    font-size: 8em;
-    text-align: center;
-    line-height: 90px;
+    /* background-color: khaki; */
+    background-image: url(media/blue-comic.jpg);
+    background-position:unset;
     margin-bottom: 5px;
-    
+    justify-content: center;
+}
+
+.game-box:hover{
+    cursor: pointer;
+}
+
+.game-box img {
+    height: 95px;
+    align-self: center;
+    padding: 10px;
+}
+.game-box img:hover {
+    cursor:context-menu;
+}
+
+
+
+/* PRE-GAME */
+
+#pregame-console {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#choose-character {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#choose-character h3{
+    text-align: center;
+}
+
+.player-menu {
+    width: 340px;
 }
