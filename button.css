@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
-
 @font-face {
     font-family: 'avengeroregular';
     src: url('./Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
@@ -9,7 +7,7 @@
 }
 
 
-.wrapper {
+.play-btn {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -86,6 +84,10 @@ path.two {
 .cta:hover path.two {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.4s;
+}
+
+.inactive {
+    display: none;
 }
 
 /* SVG animations */

@@ -19,7 +19,6 @@ body {
     background-position:center;
     font-family: 'avengeroregular';
     color: white;
-    /* letter-spacing: 3px; */
     letter-spacing: 0.15em;
     text-shadow: 2px 2px blue;
 }
@@ -38,7 +37,7 @@ h1 {
 }
 
 /* GAME */
-#game-board-container {
+.game-board-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,12 +45,23 @@ h1 {
     height: 800px;
     width: 1000px;
     background-color:rgba(40, 46, 59, 0.966);
-    /* background-image: url(media/red-dots.png); */
-    /* background-position:center; */
     align-self: center;
     border-radius: 3%;
     box-shadow: 3px 3px 5px #333;
 
+}
+
+.game-board-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    border-radius: 5px;
+    padding-bottom: 50px;
+    background-image: url("media/blue-orange-comic.jpg");
+    /* background-repeat:no-repeat; */
+    background-position: center;
+    text-shadow: 2px 1px red;
 }
 
 #game-board {
@@ -59,9 +69,13 @@ h1 {
     flex-direction: column;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-content: space-between;
     width: 340px;
+    height: 340px;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 50px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .game-box {
@@ -69,10 +83,9 @@ h1 {
     flex-direction: column;
     width: 110px;
     height: 110px;
-    /* background-color: khaki; */
     background-image: url('media/blue-comic.jpg');
     background-position:unset;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     justify-content: center;
 }
 
@@ -93,7 +106,7 @@ h1 {
 
 /* PRE-GAME */
 
-#pregame-console {
+.pregame-console {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,7 +190,7 @@ h1 {
 }
 
 #player1-choice-text, #player2-choice-text {
-    font-size: 70%;
+    font-size: 80%;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -197,4 +210,8 @@ h1 {
 
 #icon-credits a{
     color: black; 
+}
+
+.inactive {
+    display: none;
 }
