@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'avengeroregular';
+    src: url('/Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
+         url('/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -9,9 +17,18 @@ body {
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-position:center;
-    font-family: "Comic Sans MS";
+    font-family: 'avengeroregular';
     color: white;
-    
+    /* letter-spacing: 3px; */
+    letter-spacing: 0.15em;
+    text-shadow: 2px 2px blue;
+}
+
+h1 {
+    margin-top: 40px;
+    text-shadow: 2px 1px red;
+    font-size: 2.8em;
+    margin-bottom: 20px;
 }
 
 #main-div{
@@ -80,7 +97,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
+    background-image: url(media/comic-book-versus2.jpg);
+    background-position: center;
+    border-radius: 5px;
+    padding-bottom: 25px;
 }
 
 #choose-character {
@@ -96,4 +117,80 @@ body {
 
 .player-menu {
     width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.character-picker {
+    width: 206px;
+    height: 206px;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    background-color: lightgray;  
+    align-self: center; 
+}
+
+.char-box {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+
+    justify-content: center;
+
+}
+
+.char-box-o {
+    background-image: url(media/blue-comic.jpg);
+    background-position:unset;
+}
+
+.char-box-x {
+    background-image: url(media/yellow-comic.jpg);
+    background-position:top;
+    
+}
+
+.char-box:hover {
+    cursor: pointer;
+    border: solid black 1px;
+    box-shadow: 0.5px 0.5px 0.5px black;
+}
+
+.char-box img {
+    height: 90px;
+    align-self: center;
+    padding: 10px;
+}
+.char-box img:hover {
+    cursor: pointer;
+}
+
+.selected-player {
+    border: solid black 1px;
+    box-shadow: 0.5px 0.5px 0.5px black;
+}
+
+#player1-choice-text, #player2-choice-text {
+    font-size: 70%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+
+#icon-credits {
+    color: black; 
+    align-self: center; 
+    width: fit-content; 
+    background-color: rgba(255, 255, 255, 0.7);
+    text-shadow: none;
+    font-family: "Comic Sans MS";
+    text-align: center;
 }
