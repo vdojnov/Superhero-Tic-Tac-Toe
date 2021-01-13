@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'avengeroregular';
-    src: url('/Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
-         url('/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
+    src: url('https://github.com/vdojnov/Superhero-Tic-Tac-Toe/blob/main/Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
+         url('https://github.com/vdojnov/Superhero-Tic-Tac-Toe/blob/main/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

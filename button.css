@@ -3,7 +3,7 @@
 @font-face {
     font-family: 'avengeroregular';
     src: url('/Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
-         url('/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
+         url('https://github.com/vdojnov/Superhero-Tic-Tac-Toe/blob/main/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -25,6 +25,7 @@
     color: white;
     /* background: #6225E6; */
     background-image: url(/media/blue-comic.jpg);
+    background-position:center;
     transition: 1s;
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
