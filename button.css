@@ -2,8 +2,8 @@
 
 @font-face {
     font-family: 'avengeroregular';
-    src: url('https://github.com/vdojnov/Superhero-Tic-Tac-Toe/blob/main/Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
-         url('https://github.com/vdojnov/Superhero-Tic-Tac-Toe/blob/main/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
+    src: url('../Superhero Tic-Tac-Toe/Averngers-font/avengeroregular-zvgl-webfont.woff2') format('woff2'),
+         url('../Superhero Tic-Tac-Toe/Averngers-font/avengeroregular-zvgl-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,7 +24,7 @@
     font-size: 30px;
     color: white;
     /* background: #6225E6; */
-    background-image: url(/media/blue-comic.jpg);
+    background-image: url('/media/blue-comic.jpg');
     background-position:center;
     transition: 1s;
     box-shadow: 6px 6px 0 black;
