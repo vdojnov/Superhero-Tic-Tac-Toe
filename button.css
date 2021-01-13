@@ -24,7 +24,7 @@
     font-size: 30px;
     color: white;
     /* background: #6225E6; */
-    background-image: url('/media/blue-comic.jpg');
+    background-image: url('media/blue-comic.jpg');
     background-position:center;
     transition: 1s;
     box-shadow: 6px 6px 0 black;
