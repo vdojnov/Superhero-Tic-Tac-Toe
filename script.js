@@ -19,12 +19,18 @@
         const gameDisplay = document.querySelector("#game-display");
         const playBtn = document.querySelector(".play-btn");
 
+        const gameBoxes = document.querySelectorAll(".game-box");
+
         const reset = () => {
             Gameboard.resetGameBoard()
         }
         const beginGame = () => {
             pregameDisplay.classList.toggle('inactive')
             gameDisplay.classList.toggle('inactive')
+        }
+
+        const testConsoleLog = () => {
+            console.log("test passed")
         }
 
         const checkForWinner = () => {
@@ -58,8 +64,11 @@
         }
 
         playBtn.addEventListener('click', beginGame)
+        gameBoxes.forEach(box => {
+            box.addEventListener('click', testConsoleLog)
+        });
 
-        return {checkForWinner}
+        return {checkForWinner, gameBoxes}
         
     })(); 
     
