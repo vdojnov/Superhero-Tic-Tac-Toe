@@ -14,17 +14,20 @@
     })();
     
     const displayController = (() => {
-        let turn = 1
-        let _playerOneChar;
-        let _playerTwoChar;
         const _pregameDisplay = document.querySelector("#pregame-display");
         const _gameDisplay = document.querySelector("#game-display");
         const _playBtn = document.querySelector(".play-btn");
-        const _playerOneChars = document.querySelectorAll(".char-box-x");
-        const _playerTwoChars = document.querySelectorAll(".char-box-o");
-        let playerOne;
-        let playerTwo;
+        
+        let turn = 1
         const _gameBoxes = document.querySelectorAll(".game-box");
+        
+        let playerOne;
+        const _playerOneChars = document.querySelectorAll(".char-box-x");
+        const playerOneNameP = document.querySelector("#player1-choice-text");
+        
+        let playerTwo;
+        const _playerTwoChars = document.querySelectorAll(".char-box-o");
+        const playerTwoNameP = document.querySelector("#player2-choice-text");
 
         
         const initGame = () => {
@@ -40,20 +43,24 @@
         function _setPlayerChar() {
             const playerObj = _getPlayerObjFromID(this.id)
             if (this.classList.contains('char-box-x')) {      
-                _playerOneChars.forEach(function (box) {
-                    box.classList.remove('selected-player')
-                })
+                _unselectChars(_playerOneChars)
                 this.classList.add('selected-player')      
-                playerOne = Player(playerObj.name, playerObj.url)
-                console.log(playerOne.getPlayerName())
+                playerOne = Player(playerObj.name, playerObj.url);
+                playerOneNameP.textContent = playerObj.name;
             } else if (this.classList.contains('char-box-o')) {
-                _playerTwoChars.forEach(function (box) {
-                    box.classList.remove('selected-player')
-                })
+                _unselectChars(_playerTwoChars)
                 this.classList.add('selected-player') 
                 playerTwo = Player(playerObj.name, playerObj.url)
-                console.log(playerTwo.getPlayerName())
+                playerTwoNameP.textContent = playerObj.name;
             }
+        }
+
+        const _unselectChars = (...selections) => {
+            selections.forEach(element => {
+                element.forEach(function (box) {
+                    box.classList.remove('selected-player')
+                })
+            });
         }
 
         function _getPlayerObjFromID(id) {
@@ -102,19 +109,37 @@
         }
 
         
-
-
-        const reset = () => {
-            Gameboard.resetGameBoard()
-            _clearPlayers()
+        function reset() {
+            Gameboard.resetGameBoard();
+            _clearPlayers();
         }
+
+
         const beginGame = () => {
             if (playerOne!=null & playerTwo!=null) {
                 _pregameDisplay.classList.toggle('inactive')
                 _gameDisplay.classList.toggle('inactive')
+                _gameBoxes.forEach(box => {
+                    box.addEventListener('click', _applyPlayerImg)
+                });
             }            
         }
 
+        const _applyPlayerImg = function() {
+            if (this.children.length === 0) {
+                const img = document.createElement('img');
+                if (_isPlayerOneTurn()) {
+                    img.src = playerOne.getPlayerImgUrl();
+                } else {
+                    img.src = playerTwo.getPlayerImgUrl();
+                }
+                this.appendChild(img);
+                turn++;
+            }
+            
+        }
+
+        const _isPlayerOneTurn = () => turn % 2 === 1;
         
         const _clearPlayers = () => {
             playerTwo = null;
@@ -157,9 +182,7 @@
         }
 
         
-        _gameBoxes.forEach(box => {
-            box.addEventListener('click', testConsoleLog)
-        });
+        
 
         return {
             checkForWinner,

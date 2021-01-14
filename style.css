@@ -180,7 +180,7 @@ h1 {
 }
 
 .selected-player {
-    border: solid black 1px;
+    border: solid red 1px;
     box-shadow: 0.5px 0.5px 0.5px black;
 }
 
