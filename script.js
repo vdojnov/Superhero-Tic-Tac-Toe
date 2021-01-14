@@ -9,8 +9,10 @@
         const resetGameBoard = () => {
             gameboard = [['1','2','3'],['4','5','6'],['7','8','9']]
         }
-
-        return {getGameboard, resetGameBoard}
+        const setGameboardVal = (i,j, val) => {
+            gameboard[i][j] = val;
+        }
+        return {getGameboard, resetGameBoard, setGameboardVal}
     })();
     
     const displayController = (() => {
@@ -122,18 +124,30 @@
                 _gameBoxes.forEach(box => {
                     box.addEventListener('click', _applyPlayerImg)
                 });
-            }            
+            }           
         }
 
         const _applyPlayerImg = function() {
             if (this.children.length === 0) {
+                const x = +this.dataset.x
+                const y = +this.dataset.y
                 const img = document.createElement('img');
                 if (_isPlayerOneTurn()) {
                     img.src = playerOne.getPlayerImgUrl();
+                    Gameboard.setGameboardVal(x,y,"x")
+                    // if(_isPlayerTwoBot()) {
+                    //     x = // some calcualted val
+                    //     y = // some calculated val
+                    //     turn++;
+                    // }
+
                 } else {
                     img.src = playerTwo.getPlayerImgUrl();
+                    Gameboard.setGameboardVal(x,y,"o")
                 }
                 this.appendChild(img);
+                console.log(Gameboard.getGameboard())
+                _checkForWinner()
                 turn++;
             }
             
@@ -151,7 +165,7 @@
             console.log(this)
         }
 
-        const checkForWinner = () => {
+        const _checkForWinner = () => {
             const boardLayout = Gameboard.getGameboard()
             for (let i = 0; i < 3; i++) {
                 if (boardLayout[0][i] === boardLayout[1][i] & boardLayout[0][i] === boardLayout[2][i]) {
@@ -185,7 +199,6 @@
         
 
         return {
-            checkForWinner,
             initGame
         }
         
