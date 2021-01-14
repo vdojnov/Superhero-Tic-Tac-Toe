@@ -166,7 +166,7 @@ h1 {
 
 .char-box:hover {
     cursor: pointer;
-    border: solid black 1px;
+    border: solid black 2px;
     box-shadow: 0.5px 0.5px 0.5px black;
 }
 

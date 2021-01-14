@@ -15,22 +15,115 @@
     
     const displayController = (() => {
         let turn = 1
-        const pregameDisplay = document.querySelector("#pregame-display");
-        const gameDisplay = document.querySelector("#game-display");
-        const playBtn = document.querySelector(".play-btn");
+        let _playerOneChar;
+        let _playerTwoChar;
+        const _pregameDisplay = document.querySelector("#pregame-display");
+        const _gameDisplay = document.querySelector("#game-display");
+        const _playBtn = document.querySelector(".play-btn");
+        const _playerOneChars = document.querySelectorAll(".char-box-x");
+        const _playerTwoChars = document.querySelectorAll(".char-box-o");
+        let playerOne;
+        let playerTwo;
+        const _gameBoxes = document.querySelectorAll(".game-box");
 
-        const gameBoxes = document.querySelectorAll(".game-box");
+        
+        const initGame = () => {
+            _playBtn.addEventListener('click', beginGame)
+            _playerOneChars.forEach(box => {
+                box.addEventListener('click', _setPlayerChar)
+            });
+            _playerTwoChars.forEach(box => {
+                box.addEventListener('click', _setPlayerChar)
+            });
+        }
+
+        function _setPlayerChar() {
+            const playerObj = _getPlayerObjFromID(this.id)
+            if (this.classList.contains('char-box-x')) {      
+                _playerOneChars.forEach(function (box) {
+                    box.classList.remove('selected-player')
+                })
+                this.classList.add('selected-player')      
+                playerOne = Player(playerObj.name, playerObj.url)
+                console.log(playerOne.getPlayerName())
+            } else if (this.classList.contains('char-box-o')) {
+                _playerTwoChars.forEach(function (box) {
+                    box.classList.remove('selected-player')
+                })
+                this.classList.add('selected-player') 
+                playerTwo = Player(playerObj.name, playerObj.url)
+                console.log(playerTwo.getPlayerName())
+            }
+        }
+
+        function _getPlayerObjFromID(id) {
+            switch(id) {
+                case "hulk":
+                  return {
+                      name: "The Hulk",
+                      url: "media/png/hulk.png"
+                  }
+                case "captainamerica":
+                    return {
+                        name: "Captain America",
+                        url: "media/png/captainAmerica.png"
+                    }
+                case "nickfury":
+                    return {
+                        name: "Nick Fury",
+                        url: "media/png/nickFury.png"
+                    }
+                case "spiderman":
+                    return {
+                        name: "Spiderman",
+                        url: "media/png/spiderman.png"
+                    }
+                case "blackpanther":
+                    return {
+                        name: "Black Panther",
+                        url: "media/png/blackPanther.png"
+                    }
+                    case "deadpool":
+                        return {
+                            name: "Deadpool",
+                            url: "media/png/deadpool.png"
+                        }
+                    case "ironman":
+                        return {
+                            name: "Ironman",
+                            url: "media/png/ironman.png"
+                        }
+                    case "thor":
+                        return {
+                            name: "Thor",
+                            url: "media/png/thor.png"
+                        }
+              }
+        }
+
+        
+
 
         const reset = () => {
             Gameboard.resetGameBoard()
+            _clearPlayers()
         }
         const beginGame = () => {
-            pregameDisplay.classList.toggle('inactive')
-            gameDisplay.classList.toggle('inactive')
+            if (playerOne!=null & playerTwo!=null) {
+                _pregameDisplay.classList.toggle('inactive')
+                _gameDisplay.classList.toggle('inactive')
+            }            
         }
 
+        
+        const _clearPlayers = () => {
+            playerTwo = null;
+            playerOne = null;
+        }
+        
         const testConsoleLog = () => {
             console.log("test passed")
+            console.log(this)
         }
 
         const checkForWinner = () => {
@@ -63,45 +156,41 @@
             
         }
 
-        playBtn.addEventListener('click', beginGame)
-        gameBoxes.forEach(box => {
+        
+        _gameBoxes.forEach(box => {
             box.addEventListener('click', testConsoleLog)
         });
 
-        return {checkForWinner, gameBoxes}
+        return {
+            checkForWinner,
+            initGame
+        }
         
     })(); 
     
-    const Player = (playerName, playerSymbol) => {
+    const Player = (playerName, playerImgUrl) => {
         const name = playerName;
-        const symbol = playerSymbol;
+        const imgUrl = playerImgUrl;
         const getPlayerName = () => name;
-        const getPlayerSymbol = () => symbol;
+        const getPlayerImgUrl = () => imgUrl;
         
         return {
-            getPlayerName, 
-            getPlayerSymbol
+             getPlayerName 
+            ,getPlayerImgUrl
         }
     };
     
-    const HumanPlayer = (playerName, playerSymbol) => {    
-        const prototype = Player(playerName,playerSymbol)
-        const playTurn = () => {
-            
-        }
-        const returnObj = {playTurn}
+    const HumanPlayer = (playerName, playerImgUrl) => {    
+        const prototype = Player(playerName,playerImgUrl)
+        const returnObj = {}
         return Object.assign({},prototype,returnObj)
     };
-    console.log("Hello")
 
-
+    displayController.initGame()
 
 // })();
     
-displayController.checkForWinner()
-    
-    
-    
+// displayController.checkForWinner()
     
     
     
