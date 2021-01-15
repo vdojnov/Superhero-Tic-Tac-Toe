@@ -115,8 +115,7 @@
                         }
               }
         }
-
-        
+                
         function reset() {
             Gameboard.resetGameBoard();
             _clearPlayers();
