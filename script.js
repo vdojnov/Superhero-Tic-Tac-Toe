@@ -31,6 +31,7 @@
         let playerTwo;
         const _playerTwoChars = document.querySelectorAll(".char-box-o");
         const playerTwoNameP = document.querySelector("#player2-choice-text");
+        const _isPlayerTwoBot = false;
 
         const _resultsText = document.querySelector("#results-text");
         const _playAgainBtn = document.querySelector("#play-again-btn");
@@ -44,6 +45,7 @@
             _playerTwoChars.forEach(box => {
                 box.addEventListener('click', _setPlayerChar);
             });
+
         }
 
         function _setPlayerChar() {
@@ -125,6 +127,7 @@
             _unhighLightSelection();
             _clearCharsfromboard();
             turn = 1;
+            _isPlayerTwoBot = false;
         }
         const _unhighLightSelection = () => {
             _unselectChars(_playerOneChars)
@@ -167,13 +170,13 @@
                 if (_isPlayerOneTurn()) {
                     img.src = playerOne.getPlayerImgUrl();
                     Gameboard.setGameboardVal(x,y,"x")
-                    // if(_isPlayerTwoBot()) {
-                    //     this.appendChild(img);
+                    if(_isPlayerTwoBot) {
+                        this.appendChild(img);
                     //     calcualteBestMove()
                     //     x = // some calcualted val
                     //     y = // some calculated val
-                    //     turn++;
-                    // };
+                        turn++;
+                    };
 
                 } else {
                     img.src = playerTwo.getPlayerImgUrl();
@@ -188,6 +191,10 @@
         }
 
         const _isPlayerOneTurn = () => turn % 2 === 1;
+
+        const setPlayerTwoToBot = () => {
+            _isPlayerTwoBot = true;
+        }
         
         const _clearPlayers = () => {
             playerTwo = null;
