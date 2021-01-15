@@ -154,8 +154,9 @@ h1 {
 }
 
 .char-box-o {
-    background-image: url('media/blue-comic.jpg');
-    background-position: unset;
+    background-image: url('media/yellow-comic.jpg');
+    background-position: top;
+    
 }
 
 .char-box-x {
