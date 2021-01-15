@@ -129,6 +129,8 @@
         const _unhighLightSelection = () => {
             _unselectChars(_playerOneChars)
             _unselectChars(_playerTwoChars)
+            playerOneNameP.textContent = "Waiting for Player 1"
+            playerTwoNameP.textContent = "Waiting for Player 2"
         }
 
         const _changeDisplays = () => {
@@ -241,14 +243,9 @@
 
         const initiatePlayer = () => {
             
-        }
+        }      
 
-        
-        
-
-        return {
-            initGame
-        }
+        return { initGame }
         
     })(); 
     
