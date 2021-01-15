@@ -207,6 +207,11 @@ h1 {
     color: black; 
 }
 
+#results-text {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
 .inactive {
     display: none;
 }

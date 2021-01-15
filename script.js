@@ -18,9 +18,10 @@
     const displayController = (() => {
         const _pregameDisplay = document.querySelector("#pregame-display");
         const _gameDisplay = document.querySelector("#game-display");
-        const _playBtn = document.querySelector(".play-btn");
+        const _playBtn = document.querySelector("#play-btn");
         
-        let turn = 1
+        let turn = 1;
+        let gameOver = false;
         const _gameBoxes = document.querySelectorAll(".game-box");
         
         let playerOne;
@@ -31,28 +32,31 @@
         const _playerTwoChars = document.querySelectorAll(".char-box-o");
         const playerTwoNameP = document.querySelector("#player2-choice-text");
 
+        const _resultsText = document.querySelector("#results-text");
+        const _playAgainBtn = document.querySelector("#play-again-btn");
+        const _selectionRequiredText = document.querySelector("#selection-required-text")
         
         const initGame = () => {
-            _playBtn.addEventListener('click', beginGame)
+            _playBtn.addEventListener('click', beginGame);
             _playerOneChars.forEach(box => {
-                box.addEventListener('click', _setPlayerChar)
+                box.addEventListener('click', _setPlayerChar);
             });
             _playerTwoChars.forEach(box => {
-                box.addEventListener('click', _setPlayerChar)
+                box.addEventListener('click', _setPlayerChar);
             });
         }
 
         function _setPlayerChar() {
-            const playerObj = _getPlayerObjFromID(this.id)
+            const playerObj = _getPlayerObjFromID(this.id);
             if (this.classList.contains('char-box-x')) {      
-                _unselectChars(_playerOneChars)
-                this.classList.add('selected-player')      
+                _unselectChars(_playerOneChars);
+                this.classList.add('selected-player');      
                 playerOne = Player(playerObj.name, playerObj.url);
                 playerOneNameP.textContent = playerObj.name;
             } else if (this.classList.contains('char-box-o')) {
-                _unselectChars(_playerTwoChars)
-                this.classList.add('selected-player') 
-                playerTwo = Player(playerObj.name, playerObj.url)
+                _unselectChars(_playerTwoChars);
+                this.classList.add('selected-player'); 
+                playerTwo = Player(playerObj.name, playerObj.url);
                 playerTwoNameP.textContent = playerObj.name;
             }
         }
@@ -114,40 +118,68 @@
         function reset() {
             Gameboard.resetGameBoard();
             _clearPlayers();
+            gameOver = false;
+            _playAgainBtn.classList.toggle("inactive");
+            _resultsText.textContent = "";
+            _changeDisplays();
+            _unhighLightSelection();
+            _clearCharsfromboard();
+            turn = 1;
+        }
+        const _unhighLightSelection = () => {
+            _unselectChars(_playerOneChars)
+            _unselectChars(_playerTwoChars)
         }
 
+        const _changeDisplays = () => {
+            _pregameDisplay.classList.toggle('inactive')
+            _gameDisplay.classList.toggle('inactive')
+        }
+
+        const _clearCharsfromboard = () => {
+            _gameBoxes.forEach(element => {
+                element.innerHTML = "";
+            })
+        }
 
         const beginGame = () => {
             if (playerOne!=null & playerTwo!=null) {
-                _pregameDisplay.classList.toggle('inactive')
-                _gameDisplay.classList.toggle('inactive')
+                _changeDisplays()
                 _gameBoxes.forEach(box => {
                     box.addEventListener('click', _applyPlayerImg)
                 });
-            }           
+                _selectionRequiredText.classList.add('inactive')
+
+                _playAgainBtn.addEventListener('click', reset)
+            } else {
+                console.log("here")
+                _selectionRequiredText.classList.remove('inactive')
+            }   
         }
 
         const _applyPlayerImg = function() {
-            if (this.children.length === 0) {
-                const x = +this.dataset.x
-                const y = +this.dataset.y
+            if (this.children.length === 0 & gameOver === false) {
+                const x = +this.dataset.x;
+                const y = +this.dataset.y;
                 const img = document.createElement('img');
                 if (_isPlayerOneTurn()) {
                     img.src = playerOne.getPlayerImgUrl();
                     Gameboard.setGameboardVal(x,y,"x")
                     // if(_isPlayerTwoBot()) {
+                    //     this.appendChild(img);
+                    //     calcualteBestMove()
                     //     x = // some calcualted val
                     //     y = // some calculated val
                     //     turn++;
-                    // }
+                    // };
 
                 } else {
                     img.src = playerTwo.getPlayerImgUrl();
-                    Gameboard.setGameboardVal(x,y,"o")
-                }
+                    Gameboard.setGameboardVal(x,y,"o");
+                };
                 this.appendChild(img);
-                console.log(Gameboard.getGameboard())
-                _checkForWinner()
+                console.log(Gameboard.getGameboard());
+                _checkForWinner();
                 turn++;
             }
             
@@ -161,31 +193,47 @@
         }
         
         const testConsoleLog = () => {
-            console.log("test passed")
-            console.log(this)
+            console.log("test passed");
+            console.log(this);
+        }
+
+        const _declareWinner = (winningSymbol) => {
+            gameOver = true;
+            if (winningSymbol === 'x') {
+                _displayWinner(playerOne)
+            } else if (winningSymbol === 'o'){
+                _displayWinner(playerTwo)
+            } else if (winningSymbol === 'tie') {
+                _displayTie()
+            }
+            _playAgainBtn.classList.toggle("inactive")
+        }
+
+        const _displayWinner = (playerObj) => {
+            _resultsText.textContent = 'The Winner is: ' + playerObj.getPlayerName()
+        }
+
+        const _displayTie = () => {
+            _resultsText.textContent = "It's a tie" 
         }
 
         const _checkForWinner = () => {
-            const boardLayout = Gameboard.getGameboard()
+            const boardLayout = Gameboard.getGameboard();
             for (let i = 0; i < 3; i++) {
                 if (boardLayout[0][i] === boardLayout[1][i] & boardLayout[0][i] === boardLayout[2][i]) {
-                    console.log(boardLayout[0][i])
-                    return boardLayout[0][i]
+                    _declareWinner(boardLayout[0][i]);
                 } else if (boardLayout[i][0] === boardLayout[i][1] & boardLayout[i][0] === boardLayout[i][2]) {
-                    console.log(boardLayout[i][0]) 
-                    return boardLayout[i][0]
+                    _declareWinner(boardLayout[i][0]); 
                 }
             }
             if (boardLayout[0][0] === boardLayout[1][1] & boardLayout[0][0] === boardLayout[2][2]){
-                console.log(boardLayout[0][0])
-                return boardLayout[0][0]
+                _declareWinner(boardLayout[0][0])
             } else if (boardLayout[0][2] === boardLayout[1][1] & boardLayout[0][2] === boardLayout[2][0]) {
-                console.log(boardLayout[0][2])
-                return boardLayout[0][2]
+                _declareWinner(boardLayout[0][2]);
             }
             
-            if (turn===9) {
-                return "tie"
+            if (turn===9 & gameOver === false) {
+                _declareWinner('tie')
             } else {
 
             }
