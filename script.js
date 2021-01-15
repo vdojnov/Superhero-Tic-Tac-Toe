@@ -20,7 +20,7 @@
         const _gameDisplay = document.querySelector("#game-display");
         const _playBtn = document.querySelector("#play-btn");
         
-        let turn = 1;
+        let _turn = 1;
         let gameOver = false;
         const _gameBoxes = document.querySelectorAll(".game-box");
         
@@ -38,7 +38,7 @@
         const _selectionRequiredText = document.querySelector("#selection-required-text")
         
         const initGame = () => {
-            _playBtn.addEventListener('click', beginGame);
+            _playBtn.addEventListener('click', _beginGame);
             _playerOneChars.forEach(box => {
                 box.addEventListener('click', _setPlayerChar);
             });
@@ -115,7 +115,7 @@
                         }
               }
         }
-                
+
         function reset() {
             Gameboard.resetGameBoard();
             _clearPlayers();
@@ -125,7 +125,7 @@
             _changeDisplays();
             _unhighLightSelection();
             _clearCharsfromboard();
-            turn = 1;
+            _turn = 1;
             _isPlayerTwoBot = false;
         }
         const _unhighLightSelection = () => {
@@ -146,7 +146,7 @@
             })
         }
 
-        const beginGame = () => {
+        const _beginGame = () => {
             if (playerOne!=null & playerTwo!=null) {
                 _changeDisplays()
                 _gameBoxes.forEach(box => {
@@ -174,7 +174,7 @@
                     //     calcualteBestMove()
                     //     x = // some calcualted val
                     //     y = // some calculated val
-                        turn++;
+                        _turn++;
                     };
 
                 } else {
@@ -184,12 +184,14 @@
                 this.appendChild(img);
                 console.log(Gameboard.getGameboard());
                 _checkForWinner();
-                turn++;
+                _turn++;
             }
             
         }
 
-        const _isPlayerOneTurn = () => turn % 2 === 1;
+        function _isPlayerOneTurn() {
+            return (_turn % 2 === 1);
+        }
 
         const setPlayerTwoToBot = () => {
             _isPlayerTwoBot = true;
@@ -240,18 +242,16 @@
                 _declareWinner(boardLayout[0][2]);
             }
             
-            if (turn===9 & gameOver === false) {
+            if (_turn===9 & gameOver === false) {
                 _declareWinner('tie')
             } else {
 
             }
         }
 
-        const initiatePlayer = () => {
-            
-        }      
-
-        return { initGame }
+        return { 
+            initGame
+        }
         
     })(); 
     
