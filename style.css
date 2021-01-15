@@ -46,7 +46,6 @@ h1 {
     align-self: center;
     border-radius: 3%;
     box-shadow: 3px 3px 5px #333;
-
 }
 
 .game-board-div {
@@ -58,7 +57,6 @@ h1 {
     padding-bottom: 15px;
     background-image: url('media/comic-book-versus2.jpg');
     background-position: center;
-    /* text-shadow: 2px 1px red; */
 }
 
 #game-board {
@@ -97,8 +95,6 @@ h1 {
 .game-box img:hover {
     cursor:context-menu;
 }
-
-
 
 /* PRE-GAME */
 
@@ -150,13 +146,11 @@ h1 {
     width: 100px;
     height: 100px;
     justify-content: center;
-
 }
 
 .char-box-o {
     background-image: url('media/yellow-comic.jpg');
     background-position: top;
-    
 }
 
 .char-box-x {
@@ -190,9 +184,6 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
 }
-
-
-
 
 #icon-credits {
     color: black; 
