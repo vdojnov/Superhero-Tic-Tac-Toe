@@ -177,6 +177,7 @@ h1 {
 .selected-player {
     border: solid red 1px;
     box-shadow: 0.5px 0.5px 0.5px black;
+    margin: 1px;
 }
 
 #player1-choice-text, #player2-choice-text {
