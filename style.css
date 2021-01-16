@@ -127,8 +127,8 @@ h1 {
 }
 
 .character-picker {
-    width: 209px;
-    height: 209px;
+    width: 210px;
+    height: 210px;
     padding: 3px;
     display: flex;
     flex-direction: row;
