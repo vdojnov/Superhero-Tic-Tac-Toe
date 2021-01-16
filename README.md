@@ -1,6 +1,6 @@
 # Superhero Tic Tac Toe - In Progress!
 
-**Description**: Tic Tac Toe game made as part of The Odin Project.
+**Description**: Designed and created a Superher themed Tic Tac Toe game as part of The Odin Project.
 
 
 # Instructions
