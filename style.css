@@ -97,7 +97,6 @@ h1 {
 }
 
 /* PRE-GAME */
-
 .pregame-console {
     display: flex;
     flex-direction: column;
@@ -128,8 +127,8 @@ h1 {
 }
 
 .character-picker {
-    width: 206px;
-    height: 206px;
+    width: 209px;
+    height: 209px;
     padding: 3px;
     display: flex;
     flex-direction: row;
@@ -146,6 +145,7 @@ h1 {
     width: 100px;
     height: 100px;
     justify-content: center;
+    margin: 2px;
 }
 
 .char-box-o {
@@ -155,14 +155,14 @@ h1 {
 
 .char-box-x {
     background-image: url('media/yellow-comic.jpg');
-    background-position: top;
-    
+    background-position: top;    
 }
 
 .char-box:hover {
     cursor: pointer;
     border: solid black 2px;
     box-shadow: 0.5px 0.5px 0.5px black;
+    margin:0px;
 }
 
 .char-box img {
