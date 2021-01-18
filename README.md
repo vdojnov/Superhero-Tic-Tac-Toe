@@ -1,6 +1,6 @@
 # Superhero Tic Tac Toe - In Progress!
 
-**Description**: Designed and created a Superher themed Tic Tac Toe game as part of The Odin Project.
+**Description**: Designed and created a desktop-only game of Superhero themed Tic Tac Toe. The purpose of the project was to use the Module pattern and the Factory Pattern to build and design objects to incorporate game logic.
 
 
 # Instructions
