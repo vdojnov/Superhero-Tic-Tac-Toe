@@ -13,7 +13,14 @@
   zoom: 0.8;
 }
 
-.cta {
+.comic-btn-small {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    zoom: 0.5;
+  }
+
+.cta, .ctaa {
     display: flex;
     padding: 10px 45px;
     text-decoration: none;
@@ -28,13 +35,21 @@
     text-shadow: none;
 }
 
+.ctaa {
+    background-image: url('./media/comic-book-versus2.jpg');
+    background-position:250px;
+    padding: 10px 20px;
+}
+
+
+
 .cta:focus {
    outline: none; 
 }
 
-.cta:hover {
+.cta:hover, .ctaa:hover {
     transition: 0.5s;
-    box-shadow: 10px 10px 0 black;
+    box-shadow: 10px 10px 0 rgba(117, 103, 103, 0.342);
 }
 
 .cta span:nth-child(2) {

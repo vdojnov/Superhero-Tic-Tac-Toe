@@ -41,8 +41,10 @@
         const _resultsText = document.querySelector("#results-text");
         const _playAgainBtn = document.querySelector("#play-again-btn");
         const _selectionRequiredText = document.querySelector("#selection-required-text")
-        
-        
+        const chooseP2Btn = document.querySelector("#toggle-p2-type")
+        const chooseP2BtnText = chooseP2Btn.querySelector('span')
+
+
         let countLogs = 0;
         
         
@@ -55,17 +57,9 @@
                 box.addEventListener('click', _setPlayerChar);
             });
 
+            chooseP2Btn.addEventListener('click', setPlayerTwoToBot);
 
-
-            setPlayerTwoToBot()
-            let gameboard =  [
-                [ 'x', 'o', 'x' ], 
-                [ 'o', 'o', 'x' ], 
-                [ 'x', '8', '9' ] 
-            ]
-            console.log(gameboard)
-            console.log(_minimax(gameboard,3,false))
-            console.log(_getbestMove(gameboard))
+          
 
         }
 
@@ -148,6 +142,7 @@
             _clearCharsfromboard();
             _turn = 1;
             _isPlayerTwoBot = false;
+            chooseP2Btn.querySelector('span').textContent = "Player Vs. Player"
         }
         const _unhighLightSelection = () => {
             _unselectChars(_playerOneChars)
@@ -195,7 +190,7 @@
                     _declareWinner(winSign)
                     if(_isPlayerTwoBot & _turn < 9 & gameOver===false) {
                         let arr = _getbestMove(Gameboard.getGameboard())
-                        console.log(arr)
+                        // console.log(arr)
                         Gameboard.setGameboardVal(arr[0],arr[1],"o")
                         _gameBoxes.forEach(box => { 
                             if (+box.dataset.x === arr[0] & +box.dataset.y === arr[1]){
@@ -205,7 +200,7 @@
                             }                            
                         });
                         _turn++;
-                        console.log(Gameboard.getGameboard())
+                        // console.log(Gameboard.getGameboard())
                     };
 
                 } else {
@@ -231,7 +226,7 @@
                 for (let j = 0;j<3;j++){
                     if (currentBoard[i][j] !== "x" & currentBoard[i][j] !== "o"){
                         let temp = currentBoard[i][j]
-                        console.log(temp)
+                        // console.log(temp)
                         currentBoard[i][j] = 'o'
                         let moveVal = _minimax(currentBoard, 9-_turn, true)
                         // console.log("move val", moveVal, bestVal)
@@ -243,7 +238,7 @@
                     }
                 }
             }
-            console.log("best Val:", bestVal)
+            // console.log("best Val:", bestVal)
             
             return bestMove
         }
@@ -271,7 +266,7 @@
                             let temp = currentBoard[i][j]
                             currentBoard[i][j] = 'x'
                             let val = _minimax(currentBoard, depth-1, false)
-                            console.log(val)
+                            // console.log(val)
                             currentBoard[i][j] = temp
     
                             if (val > maxEval){    
@@ -364,7 +359,13 @@
         }
 
         const setPlayerTwoToBot = () => {
-            _isPlayerTwoBot = true;
+            if (_isPlayerTwoBot){
+                _isPlayerTwoBot=false
+                chooseP2Btn.querySelector('span').textContent = "Player Vs. Player"
+            } else{
+                _isPlayerTwoBot=true
+                chooseP2Btn.querySelector('span').textContent = "Player Vs. AI"
+            }
         }
         
         const _clearPlayers = () => {
