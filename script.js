@@ -142,7 +142,7 @@
             _clearCharsfromboard();
             _turn = 1;
             _isPlayerTwoBot = false;
-            chooseP2Btn.querySelector('span').textContent = "Player Vs. Player"
+            chooseP2Btn.querySelector('span').textContent = "Player Vs. Player";            
         }
         const _unhighLightSelection = () => {
             _unselectChars(_playerOneChars)
