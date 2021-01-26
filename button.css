@@ -52,7 +52,17 @@
     box-shadow: 10px 10px 0 rgba(117, 103, 103, 0.342);
 }
 
+.ctaa:hover  span:nth-child(2) {
+    transition: 0.5s;
+    margin: 1px;
+}
+
 .cta span:nth-child(2) {
+    transition: 0.5s;
+    margin-right: 0px;
+}
+
+.ctaa span:nth-child(2) {
     transition: 0.5s;
     margin-right: 0px;
 }
